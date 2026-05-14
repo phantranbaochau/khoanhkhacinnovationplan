@@ -1,0 +1,1191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Phúc Long — Innovation Idea</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #1a1a18;
+    --ink-soft: #4a4a42;
+    --ink-muted: #8a8a7e;
+    --cream: #f5f0e8;
+    --cream-dark: #ede7d9;
+    --green-deep: #0d4a35;
+    --green-mid: #1a6b4a;
+    --green-light: #e8f2ed;
+    --gold: #c9973a;
+    --gold-light: #f5e8cc;
+    --red-soft: #c94040;
+    --red-light: #f5e8e8;
+    --border: rgba(26,26,24,0.12);
+    --serif: 'Cormorant Garamond', Georgia, serif;
+    --sans: 'DM Sans', system-ui, sans-serif;
+    --mono: 'DM Mono', monospace;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: var(--sans);
+    background: var(--cream);
+    color: var(--ink);
+    font-size: 15px;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ── COVER ── */
+  .cover {
+    min-height: 100vh;
+    background: var(--green-deep);
+    display: grid;
+    grid-template-rows: 1fr auto;
+    padding: 60px;
+    position: relative;
+    overflow: hidden;
+  }
+  .cover::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+      repeating-linear-gradient(0deg, transparent, transparent 59px, rgba(255,255,255,0.04) 59px, rgba(255,255,255,0.04) 60px),
+      repeating-linear-gradient(90deg, transparent, transparent 59px, rgba(255,255,255,0.04) 59px, rgba(255,255,255,0.04) 60px);
+    pointer-events: none;
+  }
+  .cover-kicker {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    color: rgba(255,255,255,0.45);
+    text-transform: uppercase;
+    margin-bottom: 48px;
+  }
+  .cover-center { align-self: center; }
+  .cover-eyebrow {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 24px;
+  }
+  .cover-title {
+    font-family: var(--serif);
+    font-size: clamp(52px, 8vw, 88px);
+    font-weight: 300;
+    line-height: 1.05;
+    color: #fff;
+    margin-bottom: 8px;
+  }
+  .cover-title em {
+    font-style: italic;
+    color: rgba(255,255,255,0.6);
+  }
+  .cover-subtitle {
+    font-family: var(--serif);
+    font-size: 22px;
+    font-weight: 300;
+    font-style: italic;
+    color: rgba(255,255,255,0.55);
+    margin-bottom: 48px;
+  }
+  .cover-desc {
+    max-width: 520px;
+    font-size: 14px;
+    font-weight: 300;
+    color: rgba(255,255,255,0.5);
+    line-height: 1.75;
+    border-left: 1px solid rgba(255,255,255,0.2);
+    padding-left: 20px;
+  }
+  .cover-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    border-top: 1px solid rgba(255,255,255,0.12);
+    padding-top: 24px;
+  }
+  .cover-footer-brand {
+    font-family: var(--serif);
+    font-size: 18px;
+    color: rgba(255,255,255,0.35);
+  }
+  .cover-footer-meta {
+    font-family: var(--mono);
+    font-size: 10px;
+    color: rgba(255,255,255,0.25);
+    letter-spacing: 0.1em;
+    text-align: right;
+    line-height: 1.8;
+  }
+
+  /* ── LAYOUT ── */
+  .page { max-width: 900px; margin: 0 auto; padding: 80px 48px; }
+  .page-wide { max-width: 1100px; margin: 0 auto; padding: 80px 48px; }
+
+  .section-divider {
+    border: none;
+    border-top: 1px solid var(--border);
+    margin: 0;
+  }
+
+  /* ── CHAPTER HEADER ── */
+  .chapter {
+    padding: 64px 48px 0;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+  .chapter-num {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    color: var(--ink-muted);
+    text-transform: uppercase;
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .chapter-num::after {
+    content: '';
+    flex: 1;
+    max-width: 48px;
+    height: 1px;
+    background: var(--border);
+  }
+  .chapter-title {
+    font-family: var(--serif);
+    font-size: clamp(32px, 5vw, 48px);
+    font-weight: 300;
+    line-height: 1.15;
+    color: var(--ink);
+    margin-bottom: 12px;
+  }
+  .chapter-title em { font-style: italic; color: var(--ink-soft); }
+  .chapter-lead {
+    font-size: 16px;
+    font-weight: 300;
+    color: var(--ink-soft);
+    max-width: 580px;
+    line-height: 1.75;
+    margin-bottom: 48px;
+  }
+
+  /* ── PULLQUOTE ── */
+  .pullquote {
+    background: var(--green-deep);
+    color: #fff;
+    padding: 48px 56px;
+    margin: 48px 0;
+    position: relative;
+  }
+  .pullquote::before {
+    content: '\201C';
+    font-family: var(--serif);
+    font-size: 120px;
+    line-height: 0.8;
+    color: rgba(255,255,255,0.1);
+    position: absolute;
+    top: 24px;
+    left: 32px;
+    pointer-events: none;
+  }
+  .pullquote-text {
+    font-family: var(--serif);
+    font-size: clamp(20px, 3vw, 26px);
+    font-weight: 300;
+    font-style: italic;
+    line-height: 1.5;
+    position: relative;
+    z-index: 1;
+    margin-bottom: 16px;
+  }
+  .pullquote-attr {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    color: rgba(255,255,255,0.4);
+    text-transform: uppercase;
+  }
+
+  /* ── INSIGHT CARDS ── */
+  .card-grid { display: grid; gap: 1px; background: var(--border); margin: 32px 0; }
+  .card-grid-2 { grid-template-columns: 1fr 1fr; }
+  .card-grid-3 { grid-template-columns: 1fr 1fr 1fr; }
+  .card-grid-4 { grid-template-columns: 1fr 1fr 1fr 1fr; }
+
+  .card {
+    background: var(--cream);
+    padding: 28px 28px 32px;
+  }
+  .card-dark { background: var(--ink); color: #fff; }
+  .card-green { background: var(--green-light); }
+  .card-gold { background: var(--gold-light); }
+  .card-red { background: var(--red-light); }
+
+  .card-tag {
+    font-family: var(--mono);
+    font-size: 9px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ink-muted);
+    margin-bottom: 14px;
+    display: block;
+  }
+  .card-dark .card-tag { color: rgba(255,255,255,0.4); }
+  .card-green .card-tag { color: var(--green-mid); }
+  .card-gold .card-tag { color: var(--gold); }
+  .card-red .card-tag { color: var(--red-soft); }
+
+  .card-title {
+    font-family: var(--serif);
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 1.25;
+    margin-bottom: 10px;
+  }
+  .card-dark .card-title { color: #fff; }
+  .card-body { font-size: 13px; font-weight: 300; color: var(--ink-soft); line-height: 1.65; }
+  .card-dark .card-body { color: rgba(255,255,255,0.55); }
+  .card-green .card-body { color: var(--green-deep); }
+  .card-gold .card-body { color: #5a3d10; }
+  .card-red .card-body { color: #6b1f1f; }
+
+  /* ── STAT CALLOUT ── */
+  .stat-row { display: flex; gap: 1px; background: var(--border); margin: 32px 0; }
+  .stat { background: var(--cream); padding: 28px 24px; flex: 1; }
+  .stat-num {
+    font-family: var(--serif);
+    font-size: 44px;
+    font-weight: 300;
+    line-height: 1;
+    color: var(--green-deep);
+    margin-bottom: 4px;
+  }
+  .stat-label { font-size: 12px; font-weight: 300; color: var(--ink-muted); line-height: 1.5; }
+  .stat-source { font-family: var(--mono); font-size: 9px; color: var(--ink-muted); margin-top: 8px; opacity: 0.6; }
+
+  /* ── 3C FRAMEWORK ── */
+  .framework-3c { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1px; background: var(--border); margin: 32px 0; }
+  .c-block { background: var(--cream); padding: 36px 28px; }
+  .c-block-dark { background: var(--ink); }
+  .c-letter {
+    font-family: var(--serif);
+    font-size: 72px;
+    font-weight: 300;
+    line-height: 1;
+    color: var(--green-deep);
+    margin-bottom: 8px;
+  }
+  .c-block-dark .c-letter { color: rgba(255,255,255,0.12); }
+  .c-name { font-family: var(--mono); font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-muted); margin-bottom: 16px; }
+  .c-block-dark .c-name { color: rgba(255,255,255,0.35); }
+  .c-content { font-size: 13px; font-weight: 300; color: var(--ink-soft); line-height: 1.7; }
+  .c-block-dark .c-content { color: rgba(255,255,255,0.6); }
+  .c-insight {
+    margin-top: 16px;
+    padding-top: 16px;
+    border-top: 1px solid var(--border);
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 15px;
+    color: var(--green-deep);
+  }
+  .c-block-dark .c-insight { color: var(--gold); border-color: rgba(255,255,255,0.1); }
+
+  /* ── IDEA EVOLUTION ── */
+  .idea-row {
+    display: grid;
+    grid-template-columns: 80px 1fr;
+    gap: 0;
+    margin-bottom: 1px;
+    background: var(--border);
+  }
+  .idea-version {
+    background: var(--ink);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px 16px;
+  }
+  .idea-version span {
+    font-family: var(--mono);
+    font-size: 10px;
+    color: rgba(255,255,255,0.7);
+    letter-spacing: 0.1em;
+    writing-mode: vertical-rl;
+    text-transform: uppercase;
+  }
+  .idea-content { background: var(--cream); padding: 24px 28px; }
+  .idea-name { font-family: var(--serif); font-size: 18px; font-weight: 400; margin-bottom: 8px; }
+  .idea-desc { font-size: 13px; color: var(--ink-soft); margin-bottom: 12px; font-weight: 300; line-height: 1.65; }
+  .idea-hole {
+    display: flex;
+    gap: 8px;
+    align-items: flex-start;
+  }
+  .hole-label {
+    font-family: var(--mono);
+    font-size: 9px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--red-soft);
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+  .hole-text { font-size: 12px; color: #6b1f1f; line-height: 1.55; }
+
+  /* ── SCAMPER ── */
+  .scamper-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--border); margin: 32px 0; }
+  .sc-card { background: var(--cream); padding: 24px 24px 28px; }
+  .sc-letter {
+    font-family: var(--serif);
+    font-size: 36px;
+    font-weight: 300;
+    color: var(--green-deep);
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+  .sc-word { font-family: var(--mono); font-size: 9px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-muted); margin-bottom: 12px; }
+  .sc-action { font-size: 13px; font-weight: 500; color: var(--ink); margin-bottom: 6px; }
+  .sc-result { font-size: 12px; font-weight: 300; color: var(--ink-soft); line-height: 1.6; }
+  .sc-highlight { background: var(--green-deep); }
+  .sc-highlight .sc-letter { color: var(--gold); }
+  .sc-highlight .sc-word { color: rgba(255,255,255,0.4); }
+  .sc-highlight .sc-action { color: #fff; }
+  .sc-highlight .sc-result { color: rgba(255,255,255,0.6); }
+
+  /* ── BIG IDEA ── */
+  .big-idea {
+    background: var(--green-deep);
+    padding: 72px 56px;
+    margin: 0;
+    text-align: center;
+  }
+  .big-idea-eyebrow {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.3);
+    margin-bottom: 32px;
+  }
+  .big-idea-name {
+    font-family: var(--serif);
+    font-size: clamp(40px, 7vw, 72px);
+    font-weight: 300;
+    color: #fff;
+    line-height: 1.1;
+    margin-bottom: 16px;
+  }
+  .big-idea-viet {
+    font-family: var(--serif);
+    font-size: 22px;
+    font-style: italic;
+    color: rgba(255,255,255,0.4);
+    margin-bottom: 40px;
+  }
+  .big-idea-line {
+    width: 48px;
+    height: 1px;
+    background: rgba(255,255,255,0.2);
+    margin: 0 auto 40px;
+  }
+  .big-idea-desc {
+    max-width: 560px;
+    margin: 0 auto;
+    font-size: 17px;
+    font-weight: 300;
+    color: rgba(255,255,255,0.6);
+    line-height: 1.75;
+  }
+
+  /* ── 4P INNOVATION ── */
+  .fourp { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--border); margin: 32px 0; }
+  .p-block { background: var(--cream); padding: 36px 32px; }
+  .p-block-accent { background: var(--green-light); }
+  .p-block-dark { background: var(--ink); }
+  .p-p {
+    font-family: var(--serif);
+    font-size: 56px;
+    font-weight: 300;
+    line-height: 1;
+    color: var(--green-deep);
+    margin-bottom: 4px;
+  }
+  .p-block-dark .p-p { color: rgba(255,255,255,0.3); }
+  .p-label { font-family: var(--mono); font-size: 9px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-muted); margin-bottom: 16px; }
+  .p-block-dark .p-label { color: rgba(255,255,255,0.3); }
+  .p-title { font-family: var(--serif); font-size: 22px; font-weight: 400; margin-bottom: 12px; }
+  .p-block-dark .p-title { color: #fff; }
+  .p-text { font-size: 13px; font-weight: 300; color: var(--ink-soft); line-height: 1.7; }
+  .p-block-dark .p-text { color: rgba(255,255,255,0.55); }
+  .p-items { list-style: none; margin-top: 14px; }
+  .p-items li { font-size: 12px; color: var(--ink-soft); padding: 5px 0; border-bottom: 1px solid var(--border); display: flex; gap: 10px; }
+  .p-block-dark .p-items li { color: rgba(255,255,255,0.5); border-color: rgba(255,255,255,0.08); }
+  .p-items li::before { content: '—'; color: var(--green-mid); flex-shrink: 0; }
+  .p-block-dark .p-items li::before { color: var(--gold); }
+
+  /* ── PROTOTYPE ── */
+  .prototype-layer {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    gap: 1px;
+    background: var(--border);
+    margin-bottom: 1px;
+  }
+  .proto-num { background: var(--cream-dark); display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 32px 20px; gap: 8px; }
+  .proto-num-n { font-family: var(--serif); font-size: 48px; font-weight: 300; color: var(--green-deep); line-height: 1; }
+  .proto-num-label { font-family: var(--mono); font-size: 9px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-muted); text-align: center; }
+  .proto-content { background: var(--cream); padding: 28px 32px; }
+  .proto-title { font-family: var(--serif); font-size: 20px; font-weight: 400; margin-bottom: 8px; }
+  .proto-desc { font-size: 13px; font-weight: 300; color: var(--ink-soft); line-height: 1.65; margin-bottom: 14px; }
+  .proto-specs { display: flex; gap: 16px; flex-wrap: wrap; }
+  .proto-spec { font-family: var(--mono); font-size: 10px; letter-spacing: 0.08em; color: var(--green-mid); background: var(--green-light); padding: 4px 10px; }
+
+  /* ── STRESS TEST ── */
+  .scenario {
+    border-left: 3px solid var(--border);
+    padding: 20px 24px;
+    margin-bottom: 16px;
+  }
+  .scenario-hostile { border-color: var(--red-soft); }
+  .scenario-neutral { border-color: var(--gold); }
+  .scenario-positive { border-color: var(--green-mid); }
+  .scenario-label { font-family: var(--mono); font-size: 9px; letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 8px; }
+  .scenario-hostile .scenario-label { color: var(--red-soft); }
+  .scenario-neutral .scenario-label { color: var(--gold); }
+  .scenario-positive .scenario-label { color: var(--green-mid); }
+  .scenario-q { font-family: var(--serif); font-style: italic; font-size: 16px; color: var(--ink); margin-bottom: 8px; line-height: 1.4; }
+  .scenario-a { font-size: 13px; color: var(--ink-soft); line-height: 1.65; font-weight: 300; }
+
+  /* ── IMPACT ── */
+  .impact-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1px; background: var(--border); margin: 32px 0; }
+  .impact-block { background: var(--cream); padding: 28px 24px; }
+  .impact-horizon { font-family: var(--mono); font-size: 9px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-muted); margin-bottom: 16px; }
+  .impact-title { font-family: var(--serif); font-size: 18px; font-weight: 400; margin-bottom: 10px; }
+  .impact-items { list-style: none; }
+  .impact-items li { font-size: 12px; font-weight: 300; color: var(--ink-soft); padding: 5px 0; border-bottom: 1px solid var(--border); display: flex; gap: 8px; line-height: 1.5; }
+  .impact-items li::before { content: '↗'; color: var(--green-mid); flex-shrink: 0; font-size: 11px; margin-top: 2px; }
+
+  /* ── CLOSING ── */
+  .closing {
+    background: var(--ink);
+    padding: 80px 56px;
+    text-align: center;
+  }
+  .closing-line {
+    font-family: var(--serif);
+    font-size: clamp(24px, 4vw, 38px);
+    font-weight: 300;
+    font-style: italic;
+    color: rgba(255,255,255,0.85);
+    line-height: 1.45;
+    max-width: 640px;
+    margin: 0 auto 24px;
+  }
+  .closing-sub {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.2);
+  }
+
+  /* ── PERSONA CARD ── */
+  .persona-card {
+    display: grid;
+    grid-template-columns: 220px 1fr;
+    gap: 1px;
+    background: var(--border);
+    margin: 32px 0;
+  }
+  .persona-id {
+    background: var(--green-deep);
+    padding: 36px 28px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .persona-name {
+    font-family: var(--serif);
+    font-size: 40px;
+    font-weight: 300;
+    color: #fff;
+    line-height: 1;
+    margin-bottom: 6px;
+  }
+  .persona-age {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 16px;
+  }
+  .persona-tag {
+    display: inline-block;
+    background: rgba(255,255,255,0.1);
+    color: rgba(255,255,255,0.6);
+    font-family: var(--mono);
+    font-size: 9px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 4px 10px;
+    margin-bottom: 4px;
+  }
+  .persona-details {
+    background: var(--cream);
+    padding: 32px 36px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+  .persona-field-label {
+    font-family: var(--mono);
+    font-size: 9px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ink-muted);
+    margin-bottom: 6px;
+  }
+  .persona-field-value {
+    font-size: 13px;
+    font-weight: 300;
+    color: var(--ink-soft);
+    line-height: 1.6;
+  }
+  .persona-field-value strong {
+    font-weight: 500;
+    color: var(--ink);
+  }
+  .persona-quote {
+    grid-column: 1 / -1;
+    border-top: 1px solid var(--border);
+    padding-top: 20px;
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 16px;
+    color: var(--green-deep);
+    line-height: 1.5;
+  }
+
+  /* ── MISC ── */
+  .text-block { max-width: 680px; }
+  .text-block p { font-size: 15px; font-weight: 300; color: var(--ink-soft); line-height: 1.8; margin-bottom: 16px; }
+  .text-block p:last-child { margin-bottom: 0; }
+  .text-block strong { font-weight: 500; color: var(--ink); }
+
+  .inline-label {
+    font-family: var(--mono);
+    font-size: 9px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ink-muted);
+    display: block;
+    margin-bottom: 6px;
+  }
+
+  .divider-text {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    margin: 48px 0;
+    color: var(--ink-muted);
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+  .divider-text::before, .divider-text::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+
+  .full-bleed { margin: 0 -48px; }
+
+  @media print {
+    .cover { min-height: auto; page-break-after: always; }
+    .big-idea { page-break-before: always; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════════ COVER -->
+<div class="cover">
+  <div class="cover-kicker">Phúc Long Heritage Tea · Innovation Idea · 2026</div>
+<div class="cover-center" style="display: flex; align-items: center; justify-content: space-between; gap: 48px;">
+  <div>
+    <div class="cover-eyebrow">Design Thinking Framework</div>
+    <h1 class="cover-title">Phúc Long<br><em>The Clique</em></h1>
+    <p class="cover-subtitle">Capturing Gen Z hearts through cultural self-care</p>
+    <p class="cover-desc">A full design thinking journey — from customer truth to stress-tested innovation — built on the belief that record-breaking profit is not a destination. It is a platform.</p>
+  </div>
+<img src="https://lh3.googleusercontent.com/d/1u4Zi8DmaV9hNyp_WbtwQZ1DkDtruIP8v" alt="Phúc Long cup"
+    style="width: 340px; height: 480px; object-fit: cover; border-radius: 4px; flex-shrink: 0; opacity: 0.85;">
+</div>
+  <div class="cover-footer">
+    <div class="cover-footer-brand">Phúc Long Heritage Tea</div>
+    <div class="cover-footer-meta">
+      Innovation Idea<br>
+      Design Thinking + Storytelling Framework<br>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════ CH 01 3C FRAMEWORK -->
+<div class="chapter">
+  <div class="chapter-num">Chapter 01</div>
+  <h2 class="chapter-title">Finding the Problem<br><em>3Cs Framework</em></h2>
+  <p class="chapter-lead">Before thinking about customers or solutions, rigorously locate where the real opportunity sits — at the intersection of Customer, Company, and Competition.</p>
+</div>
+
+<div class="page">
+  <div class="framework-3c">
+    <div class="c-block">
+      <div class="c-letter">C</div>
+      <div class="c-name">Customer</div>
+      <div class="c-content">Gen Z visits cafés 3–5× a week — for taste, for work, for social context. But they carry stress into every visit and leave with it mostly intact. They want to feel taken care of, not lectured to. They share what feels authentic and earned. They ignore what feels manufactured.<br><br><strong>The unmet need:</strong> a small, daily act that signals self-care without requiring effort.</div>
+      <div class="c-insight">"Give me something that makes me feel like I'm living well — not trying to."</div>
+    </div>
+    <div class="c-block c-block-dark">
+      <div class="c-letter" style="color: rgba(255,255,255,0.36);">C</div>
+      <div class="c-name">Company</div>
+      <div class="c-content">Phúc Long is both a mass-market café chain and a symbol of Vietnamese tea heritage — no competitor holds both at once. Record profits confirm strong execution. But profit is a lagging indicator. The harder question — does Gen Z feel this brand is <em>theirs</em>? — is still unanswered.<br><br><strong>The internal truth:</strong> Phúc Long has the credibility to speak about Vietnamese tea culture. No challenger does. But heritage that goes unspoken is heritage wasted.</div>
+      <div class="c-insight">"We have the credibility. We haven't yet built the meaning."</div>
+    </div>
+    <div class="c-block">
+      <div class="c-letter">C</div>
+      <div class="c-name">Competition</div>
+      <div class="c-content">Gong Cha, The Alley, and dozens of craft tea brands compete on speed, novelty, and aesthetic shareability. None own a cultural positioning — because none have the heritage to back one. Local wellness brands are emerging (herbal teas, adaptogens) but they live in supplement stores, not cafés.<br><br><strong>The competitive gap:</strong> the "mindful Vietnamese tea" position is entirely unclaimed. It requires heritage to own. Only Phúc Long has it.</div>
+      <div class="c-insight">"The position is open. The window is closing."</div>
+    </div>
+  </div>
+
+  <div class="divider-text">Root cause</div>
+
+  <div class="text-block">
+    <p>Three things are true at once: <strong>the Customer already uses café visits to decompress. The Company has the heritage to own that moment. No Competitor has claimed it.</strong> That overlap points to one precise problem.</p>
+    <p>Gen Z customers walk into Phúc Long stressed and walk out slightly less stressed. Record profits prove the brand gets them in. But <strong>no one has ever named what just happened. That is not a product gap — it is a meaning gap.</strong></p>
+    <p>The real question: is Phúc Long building <strong>emotional loyalty</strong> — the kind that holds when a competitor opens across the street — or just a transactional habit? Habit is replaceable. Loyalty built on cultural identity is not.</p>
+  </div>
+</div>
+
+<hr class="section-divider">
+
+<!-- ═══════════════════════════════════════════════ CH 02 CUSTOMER -->
+<div class="chapter">
+  <div class="chapter-num">Chapter 02</div>
+  <h2 class="chapter-title">Understanding the<br><em>Customer</em></h2>
+  <p class="chapter-lead">Now that we know where the opportunity sits, here is the human at the centre of it. Meet John — a typical Vietnamese Gen Z customer.</p>
+</div>
+
+<div class="page">
+
+  <!-- PERSONA CARD -->
+  <div class="persona-card">
+    <div class="persona-id">
+      <div class="persona-name">John</div>
+      <div class="persona-age">18 · Male · Gen Z</div>
+      <span class="persona-tag">FTU students</span>
+      <span class="persona-tag">Ho Chi Minh City</span>
+      <span class="persona-tag">Phúc Long regular</span>
+    </div>
+    <div class="persona-details">
+      <div>
+        <div class="persona-field-label">Behaviours</div>
+        <div class="persona-field-value">Checks TikTok before getting out of bed. Works from office or co-working spaces. Visits cafés 3–4× a week — <strong>always around a transition</strong>: before a big meeting, between back-to-back shifts, after a long class. Orders quickly, stays longer than planned.</div>
+      </div>
+      <div>
+        <div class="persona-field-label">Motivations</div>
+        <div class="persona-field-value">Wants to feel like he's <strong>living well, not just surviving.</strong> Seeks small wins that signal self-care without requiring effort. Values things that feel authentically Vietnamese, not imported wellness trends. Shares what makes him look like he has his life together.</div>
+      </div>
+      <div>
+        <div class="persona-field-label">Pain Points</div>
+        <div class="persona-field-value">Constant burnout from deadlines and always-on culture. <strong>No moment in the day that feels like his own.</strong> Social media makes him feel perpetually behind. Café visits reset him slightly — but nothing holds that feeling.</div>
+      </div>
+      <div>
+        <div class="persona-field-label">Relationship with Phúc Long</div>
+        <div class="persona-field-value">Goes regularly. Likes the tea, trusts the brand. But it's <strong>a habit, not a ritual</strong> — which means it's replaceable. The day a competitor opens closer to his office, there's nothing keeping him loyal.</div>
+      </div>
+      <div class="persona-quote">"I get a drink, but nothing more. If Phúc Long stays just a habit, it's replaceable — but if it becomes my self-care ritual, they win my loyalty for life."</div>
+    </div>
+  </div>
+
+  <div class="text-block" style="margin-top: 32px;">
+    <p>John is not unique. He is the median. Vietnamese Gen Z is the first generation to carry both the ambition of a fast-growing economy <strong>and</strong> the anxiety of being always-on, always-compared, always-performing.</p>
+    <p>He visits Phúc Long the way he takes a breath between things — not to be mindful, but because he needs a moment that belongs to him. The café is already doing that job. <strong>No brand has named it yet.</strong></p>
+  </div>
+
+  <div class="stat-row" style="margin-top: 40px;">
+    <div class="stat">
+      <div class="stat-num">57%</div>
+      <div class="stat-label">Of Vietnam's population at high mental health risk — Gen Z consistently most affected</div>
+      <div class="stat-source">Naluri Asia Mental Health Report, 2025</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">45%</div>
+      <div class="stat-label">Of Vietnamese Gen Z now limit or avoid alcohol — café culture is replacing social drinking</div>
+      <div class="stat-source">NielsenIQ Vietnam Young Consumers, 2025</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">78%</div>
+      <div class="stat-label">Of Vietnamese beverage consumers actively demand functional health benefits in their drinks</div>
+      <div class="stat-source">InsightAsia Vietnam Beverage U&A Study, 2025</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">78%</div>
+      <div class="stat-label">Of Gen Z globally admit to feeling addicted to their phone or social media</div>
+      <div class="stat-source">Harmony Healthcare IT, 2025</div>
+    </div>
+  </div>
+
+  <div class="card-grid card-grid-3" style="margin-top: 32px;">
+    <div class="card">
+      <span class="card-tag">Tension 01</span>
+      <h3 class="card-title">Identity under performance</h3>
+      <p class="card-body">John curates a public self while privately questioning whether he's doing life correctly. Every purchase is a micro-statement of identity. The café brand he chooses says something about who he is — or who he wants to be seen as.</p>
+    </div>
+    <div class="card card-green">
+      <span class="card-tag">Tension 02</span>
+      <h3 class="card-title">Craving roots in a rootless moment</h3>
+      <p class="card-body">He can access global culture fluently — K-pop, matcha, European café aesthetics — yet feels a quiet pull toward something distinctly Vietnamese. Global is familiar. Local feels earned.</p>
+    </div>
+    <div class="card">
+      <span class="card-tag">Tension 03</span>
+      <h3 class="card-title">Digital addiction, analog longing</h3>
+      <p class="card-body">78% of his generation admit phone addiction. Yet the same cohort curates "slow living" content, drives the journaling revival, and queues for analogue experiences. They are not anti-digital. They are looking for permission to be off — without missing out.</p>
+    </div>
+  </div>
+
+  <div class="divider-text">The insight</div>
+
+  <div class="pullquote">
+    <p class="pullquote-text">He doesn't walk into Phúc Long to be mindful. He walks in because he needs a moment that belongs to him — and no brand has ever given that moment a name.</p>
+    <p class="pullquote-attr">Synthesised customer insight · Vietnamese Gen Z café behaviour</p>
+  </div>
+
+  <div class="card card-dark" style="margin-top: 0;">
+    <span class="card-tag">From insight to positioning gap</span>
+    <h3 class="card-title" style="font-size: 22px; margin-bottom: 12px;">Gen Z doesn't need another wellness product. They need a cultural act of self-care that feels earned, Vietnamese, and worth sharing.</h3>
+    <p class="card-body" style="font-size: 14px;">John's café visit is already a transition ritual — the data backs it up. <strong>The gap is that no brand has claimed it.</strong> He walks in stressed, walks out slightly less stressed, and no brand has ever said: "we see what you just went through, and it matters." That is the positioning gap. Not a product gap. Phúc Long — with its heritage, scale, and Gen Z trust — is the only brand that can fill it.</p>
+  </div>
+</div>
+
+<hr class="section-divider">
+
+<!-- ═══════════════════════════════════════════════ CH 03 IDEA EVOLUTION -->
+<div class="chapter">
+  <div class="chapter-num">Chapter 03</div>
+  <h2 class="chapter-title">The Evolution<br><em>of Ideas</em></h2>
+  <p class="chapter-lead">Three ideas were tried before the right one emerged. Here is what was tested, what failed, and what each failure revealed.</p>
+</div>
+
+<div class="page">
+  <div class="idea-row">
+    <div class="idea-version"><span>Idea V1</span></div>
+    <div class="idea-content">
+      <div class="idea-name">Functional wellness tea sub-line with adaptogens</div>
+      <p class="idea-desc">Four mood-coded blends (Calm, Focus, Joy, Rest) with light adaptogenic additions — lion's mane, lemon balm, ashwagandha. Positioned as "Vietnamese mindful tea." New cup sleeve, QR code linking to wellness landing page. App integration with mood journaling streaks.</p>
+      <div class="idea-hole">
+        <span class="hole-label">Critical hole →</span>
+        <span class="hole-text">Adaptogen doses in tea are clinically negligible. Health claims without proof are a regulatory risk. Mood journaling is high friction for a busy Gen Z customer. Most critically: Gen Z will call out "wellness washing" on TikTok immediately — and that backlash is unfixable.</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="idea-row">
+    <div class="idea-version"><span>Idea V2</span></div>
+    <div class="idea-content">
+      <div class="idea-name">Sand timer ritual + 90-second phone-down moment</div>
+      <p class="idea-desc">Sand timer placed with every order. Barista delivers cup with the phrase "nghỉ một chút trước khi uống." The prop creates a physical pause moment. TikTok-friendly visual. Positioning delivered through sensory surprise.</p>
+      <div class="idea-hole">
+        <span class="hole-label">Critical hole →</span>
+        <span class="hole-text">No one asked for a mindfulness instruction with their drink. Customers who didn't opt in resent the implication. The sand timer means nothing without context — it's a confusing prop. And telling a Gen Z customer to put their phone down is patronising: they already know they're on it too much.</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="idea-row">
+    <div class="idea-version"><span>Idea V3</span></div>
+    <div class="idea-content">
+      <div class="idea-name">Chuỗi Trà daily purchase streak, TikTok-native</div>
+      <p class="idea-desc">QR scan per cup = one streak day. Streak counter app screen. Loss-aversion mechanics (push notification before midnight if no scan). 7-day badges shareable to TikTok. Exclusive seasonal blends unlocked at day 14 and day 30. Monthly ceramic cup reward.</p>
+      <div class="idea-hole">
+        <span class="hole-label">Critical hole →</span>
+        <span class="hole-text">Daily streak = daily purchase = daily caffeine pressure. A brand that claims to care about wellness cannot simultaneously push daily consumption. Worse, the streak punishes exactly the customer it wants to keep — someone who travels, gets sick, or has a brutal week. Gamification that punishes gets abandoned.</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="idea-row" style="margin-bottom: 0;">
+    <div class="idea-version" style="background: var(--green-deep);"><span style="color: rgba(255,255,255,0.5);">What remains</span></div>
+    <div class="idea-content" style="background: var(--green-light);">
+      <div class="idea-name" style="color: var(--green-deep);">What survived all three failures</div>
+      <p class="idea-desc" style="color: var(--green-deep); margin-bottom: 14px;">Five load-bearing elements made it through. Everything else was scaffolding.</p>
+      <ul style="list-style: none; padding: 0; margin: 0;">
+        <li style="display: flex; gap: 10px; padding: 8px 0; border-bottom: 1px solid rgba(13,74,53,0.12); font-size: 13px; color: var(--green-deep); line-height: 1.55;"><span style="color: var(--green-mid); flex-shrink: 0;">—</span><span><strong>Occasion-based naming</strong> tied to real life transitions — in-store menu cards renamed by moment (before the meeting, after class, mid-shift), not by flavour.</span></li>
+        <li style="display: flex; gap: 10px; padding: 8px 0; border-bottom: 1px solid rgba(13,74,53,0.12); font-size: 13px; color: var(--green-deep); line-height: 1.55;"><span style="color: var(--green-mid); flex-shrink: 0;">—</span><span><strong>A streak mechanic decoupled from daily consumption</strong> — weekly, not daily; counts meaningful visits, not calendar days. No punishment for a missed week.</span></li>
+        <li style="display: flex; gap: 10px; padding: 8px 0; border-bottom: 1px solid rgba(13,74,53,0.12); font-size: 13px; color: var(--green-deep); line-height: 1.55;"><span style="color: var(--green-mid); flex-shrink: 0;">—</span><span><strong>TikTok-native shareability</strong> at natural milestone moments — streak badges, reunion posts, and break commiseration content generated organically by customers, not by ads.</span></li>
+        <li style="display: flex; gap: 10px; padding: 8px 0; border-bottom: 1px solid rgba(13,74,53,0.12); font-size: 13px; color: var(--green-deep); line-height: 1.55;"><span style="color: var(--green-mid); flex-shrink: 0;">—</span><span><strong>Exclusive streak-gated unlocks</strong> — seasonal blends available only to active streak holders, creating FOMO without pressuring frequency.</span></li>
+        <li style="display: flex; gap: 10px; padding: 8px 0; font-size: 13px; color: var(--green-deep); line-height: 1.55;"><span style="color: var(--green-mid); flex-shrink: 0;">—</span><span><strong>Vietnamese cultural framing as the core</strong>, not a decoration — uống trà positioned as an act of self-care, not a product feature.</span></li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<hr class="section-divider">
+
+<!-- ═══════════════════════════════════════════════ CH 04 SCAMPER -->
+<div class="chapter">
+  <div class="chapter-num">Chapter 04</div>
+  <h2 class="chapter-title">Finding the Right One<br><em>SCAMPER Framework</em></h2>
+  <p class="chapter-lead">Seven lenses, each questioning a different assumption of the idea. The combination produces the version that holds under pressure.</p>
+</div>
+
+<div class="page">
+  <div class="scamper-grid">
+    <div class="sc-card">
+      <div class="sc-letter">S</div>
+      <div class="sc-word">Substitute</div>
+      <div class="sc-action">Replace the daily purchase trigger with a life-moment trigger</div>
+      <div class="sc-result">The cue shifts from "come in every day" to "you have a moment worth marking." The streak counts meaningful visits, not calendar days. Someone who visits 3× a month consistently outranks someone who comes daily for a week then disappears.</div>
+    </div>
+    <div class="sc-card">
+      <div class="sc-letter">C</div>
+      <div class="sc-word">Combine</div>
+      <div class="sc-action">Fuse Vietnamese tea ritual language with the TikTok streak mechanic</div>
+      <div class="sc-result">The streak doesn't call itself a loyalty programme. It's called "khoảnh khắc" — moments. You collect moments, not points. That framing is culturally resonant (Vietnamese tradition values the fleeting moment) and TikTok-native (Gen Z already counts and documents their moments).</div>
+    </div>
+    <div class="sc-card sc-highlight">
+      <div class="sc-letter">A</div>
+      <div class="sc-word">Adapt — the breakthrough</div>
+      <div class="sc-action">Borrow Duolingo's loss-aversion mechanic, but apply it to cultural identity, not language</div>
+      <div class="sc-result">Duolingo works not because it teaches well, but because breaking a streak feels like betraying a version of yourself. Khoảnh Khắc borrows this: the streak is your record of taking care of yourself — the Vietnamese way. Breaking it isn't losing points. It's letting that version of yourself slip. That emotional stake is what makes it sticky.</div>
+    </div>
+    <div class="sc-card">
+      <div class="sc-letter">M</div>
+      <div class="sc-word">Modify</div>
+      <div class="sc-action">Shift menu language from flavour names to life-transition names</div>
+      <div class="sc-result">"Trước khi vào họp" (before your meeting). "Giữa ca" (mid-shift). "Sau giờ học" (after class). No mood claim. No health claim. Just an accurate name for the moment the customer is already in. <strong>The menu becomes a mirror.</strong></div>
+    </div>
+    <div class="sc-card">
+      <div class="sc-letter">P</div>
+      <div class="sc-word">Put to other uses</div>
+      <div class="sc-action">Turn the streak break into content, not failure</div>
+      <div class="sc-result">"Mình vừa mất chuỗi" is already a TikTok video. Design the break experience as carefully as the streak itself — a gentle message ("nghỉ ngơi cũng là chăm sóc bản thân"), a rescue offer, a shareable "I'll be back" card. <strong>Failure becomes re-engagement.</strong></div>
+    </div>
+    <div class="sc-card">
+      <div class="sc-letter">E</div>
+      <div class="sc-word">Eliminate</div>
+      <div class="sc-action">Cut everything that asks the customer to change their behaviour</div>
+      <div class="sc-result">The sand timer. The journaling prompt. The wellness claims. The daily pressure. Gone. What remains works within habits customers already have: they visit, they scan their phone, they share milestones. <strong>Zero new habits required — only new meaning on existing ones.</strong></div>
+    </div>
+    <div class="sc-card" style="grid-column: 1 / -1; background: var(--cream-dark);">
+      <div class="sc-letter">R</div>
+      <div class="sc-word">Reverse</div>
+      <div class="sc-action">Instead of the brand teaching wellness, let customers teach each other</div>
+      <div class="sc-result">When a friend's streak appears on a TikTok FYP, that's not advertising — it's trusted peer proof. <strong>Phúc Long's role flips: from wellness instructor to wellness infrastructure.</strong> The brand builds the system. Customers build the culture.</div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════ BIG IDEA -->
+<div class="big-idea">
+  <p class="big-idea-eyebrow">The Idea — Synthesised from SCAMPER + Design Thinking</p>
+  <h2 class="big-idea-name">Khoảnh Khắc</h2>
+  <p class="big-idea-viet">Moments worth keeping</p>
+  <div class="big-idea-line"></div>
+  <p class="big-idea-desc">Phúc Long's existing teas, renamed by life transition instead of flavour. Anchored by a weekly streak that collects meaningful visits — not daily purchases. Designed to generate organic TikTok content at every milestone, break, and return.</p>
+</div>
+
+<hr class="section-divider">
+
+<!-- ═══════════════════════════════════════════════ CH 05 AIMS -->
+<div class="chapter">
+  <div class="chapter-num">Chapter 05</div>
+  <h2 class="chapter-title">What It Aims<br><em>to Do</em></h2>
+  <p class="chapter-lead">Three aims — layered in order of depth. The first is visible. The second is felt. The third is what makes the brand irreplaceable.</p>
+</div>
+
+<div class="page">
+  <div class="card-grid card-grid-3">
+    <div class="card">
+      <span class="card-tag">Aim 01 · Visible</span>
+      <h3 class="card-title">Own the transition moment</h3>
+      <p class="card-body">Make Phúc Long the brand John associates with the in-between — before work, after class, mid-shift. Not through ads. Through menu language so accurate to his real life that he feels understood, not marketed to.</p>
+    </div>
+    <div class="card card-green">
+      <span class="card-tag">Aim 02 · Felt</span>
+      <h3 class="card-title">Make self-care feel Vietnamese</h3>
+      <p class="card-body">Self-care in Vietnam currently speaks Korean, Japanese, or Western. Khoảnh Khắc proposes something simpler: uống trà — drinking tea, the most Vietnamese act there is — is already self-care. No import required.</p>
+    </div>
+    <div class="card card-dark">
+      <span class="card-tag">Aim 03 · Irreplaceable</span>
+      <h3 class="card-title">Build an identity customers protect</h3>
+      <p class="card-body">The streak is not a loyalty scheme. It is a record of a version of yourself. A customer with a 40-day khoảnh khắc streak is not protecting points — he is protecting a self-narrative: "I am someone who takes care of himself." Phúc Long becomes the infrastructure of that narrative.</p>
+    </div>
+  </div>
+</div>
+
+<hr class="section-divider">
+
+<!-- ═══════════════════════════════════════════════ CH 06 4P INNOVATION -->
+<div class="chapter">
+  <div class="chapter-num">Chapter 06</div>
+  <h2 class="chapter-title">4P Innovation<br><em>Framework</em></h2>
+  <p class="chapter-lead">Innovation across four dimensions — Product, Process, Position, and Paradigm — ensures the idea is simultaneously new in multiple registers, not just one.</p>
+</div>
+
+<div class="page">
+  <div class="fourp">
+    <div class="p-block">
+      <div class="p-p">P</div>
+      <div class="p-label">Product innovation</div>
+      <h3 class="p-title">Transition-named tea editions</h3>
+      <p class="p-text">Phúc Long's existing teas, re-presented under transition-moment names. <strong>No reformulation. The innovation is in meaning, not chemistry</strong> — the most defensible and least expensive kind.</p>
+      <ul class="p-items">
+        <li>Trước khi vào họp — strong black tea, morning focus</li>
+        <li>Giữa ca — mid-day oolong, afternoon reset</li>
+        <li>Sau giờ học — light green, post-study wind-down</li>
+        <li>Tối về nhà — lotus chrysanthemum, end-of-day calm</li>
+        <li>Seasonal "khoảnh khắc đặc biệt" — streak-unlocked only</li>
+      </ul>
+    </div>
+    <div class="p-block p-block-dark">
+      <div class="p-p" style="color:rgba(255,255,255,0.3)">P</div>
+      <div class="p-label">Process innovation</div>
+      <h3 class="p-title">Four system-level changes. No new training required.</h3>
+      <p class="p-text">The experience is redesigned at four points in the existing process. <strong>No new behaviour asked of staff. No script.</strong> The meaning is delivered by the system — consistent on every shift, from day one.</p>
+      <ul class="p-items">
+        <li>Menu by life moment, not flavour — the customer's choice becomes self-reflective: "what moment am I in?"</li>
+        <li>Occasion-facing cup handoff — sleeve oriented so the customer reads their own moment as the cup lands</li>
+        <li>Streak memory loop — on a 3rd visit of the week, the app surfaces "Tuần này bạn đã có 3 khoảnh khắc." The brand feels like it knows you</li>
+        <li>Gated seasonal menu — exclusive blend visible only to active streak holders. Access earned, not bought</li>
+      </ul>
+    </div>
+    <div class="p-block p-block-accent">
+      <div class="p-p" style="color: var(--green-mid);">P</div>
+      <div class="p-label">Position innovation</div>
+      <h3 class="p-title">From tea brand to self-care infrastructure</h3>
+      <p class="p-text">No café brand in Vietnam currently owns the position of "the brand that sees where you are in your day." <strong>Khoảnh Khắc claims it.</strong> Menu language, the streak, and cultural framing all say the same thing: Phúc Long sees you as a person moving through a day that matters — not as a transaction.</p>
+      <ul class="p-items">
+        <li>Positioning owned through language, not ad spend</li>
+        <li>Heritage credibility makes it authentic — unavailable to challengers</li>
+        <li>Category created: "transition tea" — own it before anyone names it</li>
+        <li>Moat: requires both heritage and Gen Z trust to replicate</li>
+      </ul>
+    </div>
+    <div class="p-block p-block-dark">
+      <div class="p-p" style="color:rgba(255,255,255,0.3)">P</div>
+      <div class="p-label">Paradigm innovation</div>
+      <h3 class="p-title">Vietnamese tea as an act of self-love</h3>
+      <p class="p-text">The dominant self-care paradigm in Vietnam is imported — Korean, Japanese, Western. <strong>Khoảnh Khắc proposes the opposite:</strong> self-care is already here. In the most Vietnamese act there is — sitting down with a cup of tea. It doesn't create a new ritual. It names one that already exists.</p>
+      <ul class="p-items">
+        <li>Reframes "uống trà" from habit to intentional self-care</li>
+        <li>Cultural pride without performance or effort</li>
+        <li>Shareable as a cultural statement, not a brand campaign</li>
+        <li>Aligns with the global Gen Z "return to roots" trend</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<hr class="section-divider">
+
+<!-- ═══════════════════════════════════════════════ CH 07 PROTOTYPE -->
+<div class="chapter">
+  <div class="chapter-num">Chapter 07</div>
+  <h2 class="chapter-title">The Prototype<br><em>What It Contains</em></h2>
+  <p class="chapter-lead">A 6-week live pilot in flagship stores. Everything required to generate real data. Nothing that requires a decision before the data exists.</p>
+</div>
+
+<div class="page">
+  <div class="prototype-layer">
+    <div class="proto-num">
+      <div class="proto-num-n">01</div>
+      <div class="proto-num-label">Physical layer</div>
+    </div>
+    <div class="proto-content">
+      <h3 class="proto-title">Transition-named menu card + redesigned cup sleeve</h3>
+      <p class="proto-desc">A supplementary acrylic menu card at flagship stores presenting 4 Khoảnh Khắc editions by occasion name. Same teas, no reformulation. New sleeve with occasion name prominent, QR code, and one Vietnamese phrase for that moment.</p>
+      <div class="proto-specs">
+        <span class="proto-spec">2-week turnaround</span>
+        <span class="proto-spec">No new equipment</span>
+        <span class="proto-spec">No reformulation</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="prototype-layer">
+    <div class="proto-num">
+      <div class="proto-num-n">02</div>
+      <div class="proto-num-label">Operations layer</div>
+    </div>
+    <div class="proto-content">
+      <h3 class="proto-title">Occasion-facing sleeve + daily tally sheet</h3>
+      <p class="proto-desc">One instruction only: place the cup with the occasion name facing the customer. No script, no training session. Separately, a paper tally sheet tracks which occasion sells at which time of day — no POS change needed. Simple, low-tech, and the pilot's primary data source.</p>
+      <div class="proto-specs">
+        <span class="proto-spec">Zero training cost</span>
+        <span class="proto-spec">Day 1 ready</span>
+        <span class="proto-spec">No script required</span>
+        <span class="proto-spec">Consistent at scale</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="prototype-layer">
+    <div class="proto-num">
+      <div class="proto-num-n">03</div>
+      <div class="proto-num-label">Digital layer</div>
+    </div>
+    <div class="proto-content">
+      <h3 class="proto-title">Khoảnh Khắc landing page + streak counter (Phase 1)</h3>
+      <p class="proto-desc">QR on sleeve links to a mobile webpage — not an app. It shows the occasion story for their blend, a 5-star tap rating, and the streak counter (month-based, not day-based). Ratings feed to Airtable. Streak stored via phone number or Zalo login. Built in one week on a no-code platform.</p>
+      <div class="proto-specs">
+        <span class="proto-spec">1-week build</span>
+        <span class="proto-spec">No app required</span>
+        <span class="proto-spec">Zalo login</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="prototype-layer" style="margin-bottom: 0;">
+    <div class="proto-num">
+      <div class="proto-num-n">04</div>
+      <div class="proto-num-label">Measurement</div>
+    </div>
+    <div class="proto-content">
+      <h3 class="proto-title">Six metrics. Six weeks. One decision.</h3>
+      <p class="proto-desc">Six metrics tracked over six weeks: sales uplift vs control stores, QR scan rate (below 8% = don't build the app; above 18% = strong signal), occasion split by time of day, repeat visits, unprompted social sharing, and menu self-selection rate. At week 6: go, pivot, or stop. No sunk cost.</p>
+      <div class="proto-specs">
+        <span class="proto-spec">6 weeks</span>
+        <span class="proto-spec">flagship stores</span>
+        <span class="proto-spec">6 metrics</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<hr class="section-divider">
+
+<!-- ═══════════════════════════════════════════════ CH 08 STRESS TEST -->
+<div class="chapter">
+  <div class="chapter-num">Chapter 08</div>
+  <h2 class="chapter-title">Stress Test<br><em>Real-World Scenarios</em></h2>
+  <p class="chapter-lead">Every concept faces hostile reality. Here are the sharpest objections and the honest answers — not the optimistic ones.</p>
+</div>
+
+<div class="page">
+  <div class="scenario scenario-hostile">
+    <div class="scenario-label">Hostile scenario 01 · Customer</div>
+    <p class="scenario-q">"I just want tea. I don't care about occasions or khoảnh khắc or any of this."</p>
+    <p class="scenario-a"><strong>Good.</strong> Khoảnh Khắc is a sub-line — the standard menu is untouched. The 60–70% who want a quick drink get exactly that. The concept is for the 30–40% already in a transition mindset. Self-selection handles this. No one is pushed into a wellness narrative they didn't ask for.</p>
+  </div>
+
+  <div class="scenario scenario-hostile">
+    <div class="scenario-label">Hostile scenario 02 · Health</div>
+    <p class="scenario-q">"A weekly streak still encourages 4 visits per month. That's still a lot of tea."</p>
+    <p class="scenario-a">Four visits per month is normal for this demographic — these are existing customers, not new ones being recruited. The streak rewards engagement consistency, not consumption volume. And a missed week <strong>pauses</strong> the streak, it doesn't reset it. No pressure. No punishment.</p>
+  </div>
+
+  <div class="scenario scenario-hostile">
+    <div class="scenario-label">Hostile scenario 03 · Competitor</div>
+    <p class="scenario-q">"Highlands Coffee or Gong Cha could copy the occasion naming tomorrow."</p>
+    <p class="scenario-a">The naming is copyable. The credibility is not. When Phúc Long says "uống trà là chăm sóc bản thân," it lands differently than when a bubble tea chain says it. <strong>The language is available to everyone. The authority to speak it belongs to Phúc Long alone.</strong> The moat is not patent-protected — it is history-protected.</p>
+  </div>
+
+  <div class="scenario scenario-neutral">
+    <div class="scenario-label">Neutral scenario 04 · Internal</div>
+    <p class="scenario-q">"Why change anything? Record profits mean the current model is working."</p>
+    <p class="scenario-a">Record profits reflect decisions made 3–5 years ago. Khoảnh Khắc is a decision for 2028–2030. <strong>The window to win Gen Z's emotional loyalty is open right now — and it closes.</strong> Once they attach to a brand, switching costs are high. Once they don't, there are none. Which brand owns their loyalty in three years?</p>
+  </div>
+
+  <div class="scenario scenario-neutral">
+    <div class="scenario-label">Neutral scenario 05 · Execution</div>
+    <p class="scenario-q">"What if customers don't understand the occasion menu and just order by flavour?"</p>
+    <p class="scenario-a">That is not failure — it is self-selection working. Flavour-first customers are the standard Phúc Long customer. The Khoảnh Khắc option is there for anyone already in a transition mindset. The pilot measures the ratio. <strong>Low uptake is data. High uptake is a mandate.</strong></p>
+  </div>
+
+  <div class="scenario scenario-positive">
+    <div class="scenario-label">Positive scenario 06 · Viral</div>
+    <p class="scenario-q">"What if a Khoảnh Khắc TikTok goes viral before the full rollout is ready?"</p>
+    <p class="scenario-a">Best problem to have. The QR page handles traffic — it's a webpage, not a server app. The menu can be printed and deployed to new stores within 5 working days. The streak system scales immediately via phone number. Have a Zalo broadcast list pre-built and a "coming to more stores soon" page ready on day one. <strong>Virality is not a risk — it is the proof case.</strong></p>
+  </div>
+</div>
+
+<hr class="section-divider">
+
+<!-- ═══════════════════════════════════════════════ CH 09 IMPACT -->
+<div class="chapter">
+  <div class="chapter-num">Chapter 09</div>
+  <h2 class="chapter-title">Impact &amp;<br><em>Sustainability</em></h2>
+  <p class="chapter-lead">What this creates in the short, medium, and long term — and why it compounds rather than fades.</p>
+</div>
+
+<div class="page">
+  <div class="impact-grid">
+    <div class="impact-block">
+      <div class="impact-horizon">Months 1–3 · Visible</div>
+      <h3 class="impact-title">Pilot signals</h3>
+      <ul class="impact-items">
+        <li>QR scan data reveals which occasions resonate most by store, time, and demographic</li>
+        <li>First organic TikTok content appears — streak milestones, occasion names, streak-break commiseration posts</li>
+        <li>Basket size uplift vs control stores confirms or denies pricing premium viability</li>
+        <li>Go/no-go decision made at week 6 with clean data</li>
+      </ul>
+    </div>
+    <div class="impact-block">
+      <div class="impact-horizon">Months 4–12 · Building</div>
+      <h3 class="impact-title">Positioning takes hold</h3>
+      <ul class="impact-items">
+        <li>Full rollout across flagship stores. Occasion language becomes part of Phúc Long's brand vocabulary</li>
+        <li>First seasonal exclusive blend launched — available only to streak holders. FOMO content cycle begins</li>
+        <li>App integration (if QR scan rate validated above 18%). Streak migrates from webpage to native experience</li>
+        <li>"Khoảnh Khắc" begins appearing in customer UGC as a natural vocabulary — not as a campaign hashtag</li>
+        <li>Competitor brands begin copying occasion naming — confirming Phúc Long owns the original</li>
+      </ul>
+    </div>
+    <div class="impact-block">
+      <div class="impact-horizon">Year 2–3 · Compounding</div>
+      <h3 class="impact-title">Cultural ownership</h3>
+      <ul class="impact-items">
+        <li>Phúc Long holds the "transition moment" position in Gen Z's café mental model — unprompted, unaided</li>
+        <li>Streak data becomes a first-party asset: Phúc Long knows which occasions drive loyalty, what time of day Gen Z needs their brand most, and which blend resonates with which life stage</li>
+        <li>"Uống trà là chăm sóc bản thân" enters cultural vocabulary — brand as author of a Vietnamese self-care paradigm</li>
+        <li>Premium pricing on Khoảnh Khắc line validated and expanded — functional revenue uplift alongside brand equity</li>
+        <li>The concept is impossible to replicate by challengers who lack the heritage foundation</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="pullquote" style="margin-top: 0;">
+    <p class="pullquote-text">The compound effect of a concept like this is not measured in quarter-on-quarter sales. It is measured in whether, three years from now, a 23-year-old Vietnamese man thinks of Phúc Long when he needs a moment that feels like his own.</p>
+    <p class="pullquote-attr">Impact thesis · Khoảnh Khắc long-term positioning</p>
+  </div>
+
+  <div class="card-grid card-grid-2" style="margin-top: 32px;">
+    <div class="card card-green">
+      <span class="card-tag">Sustainability · Brand</span>
+      <h3 class="card-title">Why this doesn't fade</h3>
+      <p class="card-body">The concept deepens as Phúc Long's tea quality stays high, Vietnamese cultural pride grows, and streak data enables more personalised offers. <strong>This is not a campaign. Campaigns end.</strong> Naming something that was already there becomes permanent vocabulary.</p>
+    </div>
+    <div class="card card-dark">
+      <span class="card-tag">Sustainability · Business</span>
+      <h3 class="card-title">What the numbers look like</h3>
+      <p class="card-body">5,000–8,000 VND premium per Khoảnh Khắc cup, justified by occasion-naming and exclusivity. At 200 cups/store/day across 20 stores: <strong>20–32 billion VND additional annual revenue</strong> — before accounting for higher visit frequency or lower Gen Z churn.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════ CLOSING -->
+<div class="closing">
+  <p class="closing-line">Phúc Long already has the tea. It already has the trust. It already has the customers walking through the door.<br><br>Khoảnh Khắc gives them a reason to stay — not in the store, but in the story.</p>
+  <p class="closing-sub">Phúc Long Heritage Tea · Khoảnh Khắc · Innovation Idea</p>
+</div>
+
+</body>
+</html>
